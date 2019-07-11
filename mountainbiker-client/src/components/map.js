@@ -1,63 +1,140 @@
-import React, { Component } from 'react'
-import { withGoogleMap, GoogleMap, Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react'
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const mapStyles = {
-  position: 'absolute',
-  width: '80%',
-  height: '80%'
-
+  map: {
+    position: 'absolute',
+    width: '55%',
+    height: '70%',
+    marginLeft: '325px',
+    marginBottom: '20px',
+    borderRadius: '10px',
+    color: 'black',
+    webkitBoxShadow: "1px 3px 1px #9E9E9E",
+    mozBoxShadow: "1px 3px 1px #9E9E9E",
+    boxShadow: "1px 3px 1px #9E9E9E"
+  }
 };
 
-export class MapContainer extends Component {
+export class CurrentLocation extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  }
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
+    const { lat, lng } = this.props.initialCenter;
+    this.state = {
+      currentLocation: {
+        lat: lat,
+        lng: lng
+      }
     }
-  };
-
-  render() {
-    console.log(this.state.paths)
-    return (
-      <Map
-          google={this.props.google}
-          zoom={14}
-          style={mapStyles}
-          initialCenter={{lat: 39.8691, lng: -86.0339}}>
-      <Marker
-          onClick={this.onMarkerClick}
-          name={'Fort Benjamin Harrison State Park'}
-        />
-      <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}>
-      <div>
-          <h4>{this.state.selectedPlace.name}</h4>
-        </div>
-      </InfoWindow>
-      </Map>
-    );
   }
-}
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDO8fJdzMbObguVg8t8GSco7Gkunlbr8Pk'
-})(MapContainer);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.google !== this.props.google) {
+      this.loadMap();
+    }
+    if (prevState.currentLocation !== this.state.currentLocation) {
+      this.recenterMap();
+    }
+  }
+
+  recenterMap() {
+   const map = this.map;
+   const current = this.state.currentLocation;
+
+   const google = this.props.google;
+   const maps = google.maps;
+
+   if (map) {
+     let center = new maps.LatLng(current.lat, current.lng);
+     map.panTo(center);
+   }
+ }
+
+ componentDidMount() {
+   if (this.props.centerAroundCurrentLocation) {
+     if (navigator && navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(pos => {
+         const coords = pos.coords;
+         this.setState({
+           currentLocation: {
+             lat: this.props.path.latitude,
+             lng: this.props.path.longitude
+           }
+         });
+       });
+     }
+   } else {
+     this.setState({
+     currentLocation: {
+       lat: this.props.path.latitude,
+       lng: this.props.path.longitude
+     }
+     })
+   }
+   this.loadMap();
+ }
+
+ loadMap() {
+    if (this.props && this.props.google) {
+      const { google } = this.props;
+      const maps = google.maps;
+
+      const mapRef = this.refs.map;
+
+      const node = ReactDOM.findDOMNode(mapRef);
+
+      let { zoom } = this.props;
+      const { lat, lng } = this.state.currentLocation;
+      const center = new maps.LatLng(lat, lng);
+      const mapConfig = Object.assign({}, {center: center,zoom: zoom});
+
+      this.map = new maps.Map(node, mapConfig);
+    }
+  }
+  renderChildren() {
+     const { children } = this.props;
+
+     if (!children) return;
+
+     return React.Children.map(children, c => {
+       if (!c) return;
+       return React.cloneElement(c, {
+         map: this.map,
+         google: this.props.google,
+         mapCenter: this.state.currentLocation
+       });
+     });
+   }
+
+   render() {
+
+     let latitude = this.props.path.latitude
+     console.log(latitude)
+
+     let longitude = this.props.path.longitude
+     console.log(longitude)
+
+     const style = Object.assign({}, mapStyles.map);
+        return (
+          <div>
+            <div style={style} ref="map">
+              Loading map, please wait...
+            </div>
+            {this.renderChildren()}
+          </div>
+        );
+      }
+
+  }
+  export default CurrentLocation;
+
+  CurrentLocation.defaultProps = {
+    zoom: 14,
+    initialCenter: {
+      lat: -87.623177,
+      lng: 41.881832
+    },
+    centerAroundCurrentLocation: false,
+    visible: true
+  };

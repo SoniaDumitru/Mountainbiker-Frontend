@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input, Icon,TextArea, Grid, Button, Dimmer, Header, Image, Segment, Form } from 'semantic-ui-react'
 import style from '../styles/paths.css'
-import MapContainer from './map.js'
+import MapContainer from './mapcontainer.js'
 
 class Path extends Component {
   constructor(props) {
@@ -107,10 +107,10 @@ class Path extends Component {
                         <Form onSubmit={this.handleSubmit}><br></br>
                           <Input size='large' onChange={this.handleChange} value={this.state.content} placeholder='Tell us more...' label={{ basic: true, content: '👍' }} labelPosition='left'/>
                           </Form><br></br>
-                            <div>{this.state.comments.map(comment =>
-                              <Segment style={{marginTop: '15px'}} padded>From <strong>{this.date(comment.created_at)}: </strong> {comment.content}</Segment>
+                            <Segment style={{marginTop: '15px'}} padded>{this.state.comments.map(comment =>
+                              <Segment style={{marginTop: '15px'}}  very padded>From <strong>{this.date(comment.created_at)}: </strong> {comment.content}</Segment>
                               )}
-                            </div><br></br></>
+                            </Segment><br></br></>
                              : null }<br></br>
                              <Dimmer.Dimmable
                              className="path-image"
@@ -122,7 +122,9 @@ class Path extends Component {
                              onMouseLeave={this.handleHide}
                              size="huge"
                              src={ this.state.path.imgMedium}/><div><br></br>
-                             <div ><MapContainer /></div>
+                             <div>
+                             {this.state.path.length > 0 ? <MapContainer path={this.state.path} /> : null }
+                             </div>
 
                              <div className="path-infocard-container">
                              <div className="path-info-card">

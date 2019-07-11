@@ -47,8 +47,8 @@ export default class Login extends Component {
                      <Button type="submit" color='black' fluid size='large'>
                        Login
                    </Button>
-                   </Segment>
-                 </Form>
+                </Segment>
+              </Form>
          </Grid.Column>
       </Grid>
 

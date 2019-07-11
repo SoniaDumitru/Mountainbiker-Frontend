@@ -13,12 +13,12 @@ export default class PathCard extends Component {
   }
 
   addAdventure =(path)=> {
-    this.setState({
-      adventures: [...this.state.adventures, path]
-    })
+      this.setState({
+        adventures: [...this.state.adventures, path]
+      })
   }
 
-  handleClick =(event)=> {
+  handleClick =(event, adventure)=> {
     if (this.props.currentUser) {
       event.preventDefault()
       fetch('http://localhost:3000/api/v1/adventures', {
@@ -43,7 +43,15 @@ export default class PathCard extends Component {
         .catch(error => console.error(error))
     }
   }
-
+// this.contains(this.state.adventures, path) ? null :  
+//   contains=(path, obj)=> {
+//       for (var i = 0; i < path.length; i++) {
+//           if (path[i] === obj) {
+//               return true;
+//           }
+//       }
+//       return false;
+//     }
 
   render() {
     const levelOfDifficulty = () => {

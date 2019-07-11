@@ -44,11 +44,11 @@ constructor() {
 			currentUser: null
 		})
 		localStorage.removeItem("token")
-		this.props.history.push("/login")
+		this.props.history.push("/home")
 	}
 
   signup = ({image, email, location, name, password, passwordConfirmation}) => {
-    // if (password === passwordConfirmation) {
+    if (password === passwordConfirmation) {
       fetch('http://localhost:3000/api/v1/users', {
         method: 'POST',
         headers: {
@@ -76,9 +76,9 @@ constructor() {
             this.props.history.push('/profile')
         }
       })
-    // } else {
-    //   alert("Passwords do not match")
-    // }
+    } else {
+      alert("Passwords do not match")
+    }
   }
 
   login =(email, password)=> {
@@ -102,7 +102,7 @@ constructor() {
         this.setState({
           currentUser: response.user
         })
-        this.props.history.push('/paths')
+        this.props.history.push('/profile')
       }
     })
   }
@@ -120,7 +120,7 @@ constructor() {
               <Route exact path="/login" render={(props) => <Login login={this.login} {...props}/>} />
               <Route exact path="/signup" render={(props) => <Signup signup={this.signup} {...props}/>} />
               <Route exact path="/path/:id" render={(props) => <Path {...props} currentUser={this.state.currentUser} /> } />
-              <Route exact path="/profile" render={(props) => <User currentUser={this.state.currentUser} {...props} /> } />
+              <Route exact path="/profile" render={(props) => <User currentUser={this.state.currentUser} logout={this.logout} {...props} /> } />
             </Switch>
         </div>
     );
