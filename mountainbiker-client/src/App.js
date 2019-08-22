@@ -11,6 +11,7 @@ import logo from './logo.svg'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
+import UpdateUser from './components/updateUser'
 
 class App extends Component {
 constructor() {
@@ -107,9 +108,7 @@ constructor() {
     })
   }
 
-
   render() {
-    // console.log(this.state.currentUser)
     return (
         <div className="App">
           <Header currentUser={this.state.currentUser} logout={this.logout}/>
@@ -117,10 +116,11 @@ constructor() {
             <Switch>
               <Route exact path="/home" component={HomePage} />
               <Route path="/paths" render={(props) => <Main {...props} currentUser={this.state.currentUser}/>} />
+              <Route exact path="/edit" render={(props) => <UpdateUser {...props} currentUser={this.state.currentUser} updateUser={this.updateUser} /> } />
               <Route exact path="/login" render={(props) => <Login login={this.login} {...props}/>} />
               <Route exact path="/signup" render={(props) => <Signup signup={this.signup} {...props}/>} />
               <Route exact path="/path/:id" render={(props) => <Path {...props} currentUser={this.state.currentUser} /> } />
-              <Route exact path="/profile" render={(props) => <User currentUser={this.state.currentUser} logout={this.logout} {...props} /> } />
+              <Route exact path="/profile" render={(props) => <User currentUser={this.state.currentUser} logout={this.logout} {...props}/> } />
             </Switch>
         </div>
     );

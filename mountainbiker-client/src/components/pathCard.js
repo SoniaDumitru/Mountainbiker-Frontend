@@ -26,7 +26,7 @@ export default class PathCard extends Component {
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-           "Access-Control-Allow-Origin" :"http://localhost:3000"
+          "Access-Control-Allow-Origin" :"http://localhost:3000"
         },
         body:JSON.stringify({
           user_id: this.props.currentUser.id,
@@ -43,7 +43,7 @@ export default class PathCard extends Component {
         .catch(error => console.error(error))
     }
   }
-// this.contains(this.state.adventures, path) ? null :  
+// this.contains(this.state.adventures, path) ? null :
 //   contains=(path, obj)=> {
 //       for (var i = 0; i < path.length; i++) {
 //           if (path[i] === obj) {

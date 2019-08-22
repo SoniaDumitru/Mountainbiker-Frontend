@@ -14,11 +14,12 @@ export default class HomePage extends Component {
           <div className='welcome-msg'>Welcome to Mountainbiker</div><br></br>
           <NavLink
             to="/paths"
-            exact><Button
+            exact>
+            <Button
             size='huge'
             inverted
             color='black'
-            content='Set focused' >Explore< /Button>
+            content='Set focused' >Explore</Button>
           </NavLink>
         </div>
       </>
