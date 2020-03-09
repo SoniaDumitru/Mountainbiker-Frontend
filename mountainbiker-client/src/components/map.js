@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Segment } from 'semantic-ui-react'
 
 const mapStyles = {
   map: {
     position: 'absolute',
-    width: '55%',
-    height: '70%',
-    marginLeft: '325px',
-    marginBottom: '20px',
-    borderRadius: '10px',
+    left: '970px',
+    width: '30%',
+    height: '90%',
+    marginBottom: '30px',
+    marginTop: '0px',
+    borderRadius: '0px',
     color: 'black',
     webkitBoxShadow: "1px 3px 1px #9E9E9E",
     mozBoxShadow: "1px 3px 1px #9E9E9E",
@@ -41,7 +43,6 @@ export class CurrentLocation extends React.Component {
   recenterMap() {
    const map = this.map;
    const current = this.state.currentLocation;
-
    const google = this.props.google;
    const maps = google.maps;
 
@@ -79,9 +80,7 @@ export class CurrentLocation extends React.Component {
     if (this.props && this.props.google) {
       const { google } = this.props;
       const maps = google.maps;
-
       const mapRef = this.refs.map;
-
       const node = ReactDOM.findDOMNode(mapRef);
 
       let { zoom } = this.props;
@@ -92,6 +91,7 @@ export class CurrentLocation extends React.Component {
       this.map = new maps.Map(node, mapConfig);
     }
   }
+
   renderChildren() {
      const { children } = this.props;
 
@@ -110,15 +110,12 @@ export class CurrentLocation extends React.Component {
    render() {
 
      let latitude = this.props.path.latitude
-     console.log(latitude)
-
      let longitude = this.props.path.longitude
-     console.log(longitude)
-
      const style = Object.assign({}, mapStyles.map);
+
         return (
           <div>
-            <div style={style} ref="map">
+            <div className='maps' style={style} ref="map">
               Loading map, please wait...
             </div>
             {this.renderChildren()}
