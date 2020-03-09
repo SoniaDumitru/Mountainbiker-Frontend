@@ -15,30 +15,31 @@ https://mountain-biker.herokuapp.com/home
 
 <img width="1435" alt="Screen Shot 2020-03-09 at 4 42 59 PM" src="https://user-images.githubusercontent.com/44908424/76260557-104d4480-6226-11ea-8323-4f46aab603f3.png">
 
-* Search By Name or By Location:
+* Search By Name or By Location -> MTB Trails Page:
 
 <img width="1432" alt="Screen Shot 2020-03-09 at 4 44 45 PM" src="https://user-images.githubusercontent.com/44908424/76260413-bfd5e700-6225-11ea-965e-e7a14e29d94a.png">
 
-* Trail Details:
+* Trail Details Page:
 
 <img width="1425" alt="Screen Shot 2020-03-09 at 5 03 36 PM" src="https://user-images.githubusercontent.com/44908424/76261787-c2860b80-6228-11ea-85cf-25019e7ceadc.png">
 
-* Post Comment for Trail:
+* Post Comment for Trail -> Trail Details Page:
+
 <img width="1438" alt="Screen Shot 2020-03-09 at 4 54 39 PM" src="https://user-images.githubusercontent.com/44908424/76260835-b00ad280-6226-11ea-9749-be02ee639196.png">
 
-* Signup:
+* Signup Page:
 
 <img width="1435" alt="Screen Shot 2020-03-09 at 5 11 50 PM" src="https://user-images.githubusercontent.com/44908424/76261922-18f34a00-6229-11ea-9a4e-03d6012399f1.png">
 
-* Logged in users can save trails to their favorites list (check profile section): 
+* Logged in users can save trails to their favorites list -> Profile Page: 
 
 <img width="1438" alt="Screen Shot 2020-03-09 at 4 55 49 PM" src="https://user-images.githubusercontent.com/44908424/76260944-eba59c80-6226-11ea-95d9-8defdf507c6b.png">
 
-* Login: 
+* Login -> Login Page: 
 
 <img width="1432" alt="Screen Shot 2020-03-09 at 5 11 10 PM" src="https://user-images.githubusercontent.com/44908424/76261929-1db7fe00-6229-11ea-9352-88ecaba8c6ee.png">
 
-* Update Account: 
+* Update Account -> Update Account Page: 
 
 <img width="1433" alt="Screen Shot 2020-03-09 at 4 57 00 PM" src="https://user-images.githubusercontent.com/44908424/76260989-024bf380-6227-11ea-95b3-4aab0e52707f.png">
 
