@@ -13,7 +13,7 @@ export default class Main extends Component {
       search: '',
       clicked_path: ''
     }
-    this.server = 'http://localhost:3000/api/v1/'
+    this.server = 'https://mountainbiker.herokuapp.com/api/v1/'
   }
 
   componentDidMount() {
