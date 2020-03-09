@@ -26,9 +26,17 @@ https://mountain-biker.herokuapp.com/home
 * Post Comment for Trail:
 <img width="1438" alt="Screen Shot 2020-03-09 at 4 54 39 PM" src="https://user-images.githubusercontent.com/44908424/76260835-b00ad280-6226-11ea-9749-be02ee639196.png">
 
+* Signup:
+
+<img width="1435" alt="Screen Shot 2020-03-09 at 5 11 50 PM" src="https://user-images.githubusercontent.com/44908424/76261922-18f34a00-6229-11ea-9a4e-03d6012399f1.png">
+
 * Logged in users can save trails to their favorites list (check profile section): 
 
 <img width="1438" alt="Screen Shot 2020-03-09 at 4 55 49 PM" src="https://user-images.githubusercontent.com/44908424/76260944-eba59c80-6226-11ea-95d9-8defdf507c6b.png">
+
+* Login: 
+
+<img width="1432" alt="Screen Shot 2020-03-09 at 5 11 10 PM" src="https://user-images.githubusercontent.com/44908424/76261929-1db7fe00-6229-11ea-9352-88ecaba8c6ee.png">
 
 * Update Account: 
 
