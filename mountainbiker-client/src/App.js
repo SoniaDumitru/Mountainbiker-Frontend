@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Main from './containers/mainContainer'
 import PathList from './containers/pathList'
-import Login from './containers/login'
-import Signup from './containers/signup'
+import Login from './components/login'
+import Signup from './components/signup'
 import User from './components/user.js'
 import Header from './components/header.js'
 import Path from './components/path.js'
 import HomePage from './components/homePage.js'
 import logo from './logo.svg'
-import './App.css'
+import './styles/style.css'
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
 import UpdateUser from './components/updateUser'
@@ -26,7 +26,7 @@ constructor() {
   componentDidMount(){
 		let token = localStorage.getItem("token")
 		if(token){
-			fetch(`http://localhost:3000/api/v1/current_user`, {
+			fetch(`https://mountainbiker.herokuapp.com/api/v1/current_user`, {
 				headers: {
 					"Authorization": token
 				}
@@ -40,17 +40,9 @@ constructor() {
 		}
 	}
 
-	logout = () => {
-		this.setState({
-			currentUser: null
-		})
-		localStorage.removeItem("token")
-		this.props.history.push("/home")
-	}
-
   signup = ({image, email, location, name, password, passwordConfirmation}) => {
     if (password === passwordConfirmation) {
-      fetch('http://localhost:3000/api/v1/users', {
+      fetch('https://mountainbiker.herokuapp.com/api/v1/users', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +75,7 @@ constructor() {
   }
 
   login =(email, password)=> {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://mountainbiker.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json",
@@ -108,12 +100,20 @@ constructor() {
     })
   }
 
+  logout = () => {
+    this.setState({
+      currentUser: null
+    })
+    localStorage.removeItem("token")
+    this.props.history.push("/home")
+  }
+
   render() {
     return (
         <div className="App">
           <Header currentUser={this.state.currentUser} logout={this.logout}/>
-
             <Switch>
+              <Route exact path="/" component={HomePage} />
               <Route exact path="/home" component={HomePage} />
               <Route path="/paths" render={(props) => <Main {...props} currentUser={this.state.currentUser}/>} />
               <Route exact path="/edit" render={(props) => <UpdateUser {...props} currentUser={this.state.currentUser} updateUser={this.updateUser} /> } />
