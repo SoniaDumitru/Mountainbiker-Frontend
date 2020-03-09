@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
-import { Navbar} from "react-bootstrap"
+import { Navbar} from 'react-bootstrap'
 import User from './user.js'
 
 export default class Header extends Component {

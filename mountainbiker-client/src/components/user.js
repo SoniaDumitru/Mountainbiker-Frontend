@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from "react-router-dom"
-import style from '../styles/style.css'
+import paths from '../styles/style.css'
 import { Input, Icon,TextArea, Grid, Button, Dimmer, Header, Image, Segment, Form, Divider} from 'semantic-ui-react'
 
 
