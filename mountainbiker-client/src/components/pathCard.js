@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Divider, Image, Icon } from 'semantic-ui-react'
-import style from '../styles/paths.css'
+import style from '../styles/style.css'
 
-export default class PathCard extends Component {
+class PathCard extends Component {
 
   constructor(props) {
     super(props)
@@ -21,12 +21,12 @@ export default class PathCard extends Component {
   handleClick =(event, adventure)=> {
     if (this.props.currentUser) {
       event.preventDefault()
-      fetch('http://localhost:3000/api/v1/adventures', {
+      fetch('https://mountainbiker.herokuapp.com/api/v1/adventures/', {
         method: 'POST', mode: "cors",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-          "Access-Control-Allow-Origin" :"http://localhost:3000"
+          "Access-Control-Allow-Origin" :"https://mountainbiker.herokuapp.com"
         },
         body:JSON.stringify({
           user_id: this.props.currentUser.id,
@@ -54,6 +54,7 @@ export default class PathCard extends Component {
 //     }
 
   render() {
+    console.log(this.props.path)
     const levelOfDifficulty = () => {
       let score=''
       if (path.difficulty === "blue") {
@@ -72,20 +73,45 @@ export default class PathCard extends Component {
       return score;
     }
 
+    const displayStars = () => {
+      let stars = ''
+      if (path.stars === 5) {
+        stars = '★★★★★'
+      } else if (path.stars >= 4 && path.stars < 5) {
+        stars = '★★★★☆'
+      } else if (path.stars >= 3 && path.stars < 4) {
+        stars = '★★★☆☆'
+      } else if (path.stars >= 2 && path.stars < 3) {
+        stars = '★★☆☆☆'
+      } else if (path.stars >= 1 && path.stars < 2) {
+        stars = '★☆☆☆☆'
+      } else {
+        stars = "no rating yet"
+      }
+      return stars;
+    }
+
     const path = this.props.path
     const showImage = !!path.imgMedium ? path.imgMedium : process.env.PUBLIC_URL + 'https://cdn.shopify.com/s/files/1/0231/7685/t/3/assets/no-image-available.png?2214404492633272863';
 
     return(
          <div className="path-card">
-         { this.props.currentUser ? <button className="adventure-button" onClick={ this.handleClick } ><Icon name='heart' /></button> : null }
+         { this.props.currentUser ?
+           <button
+             className="adventure-button"
+             onClick={ this.handleClick }>
+             <Icon>❤️</Icon>
+           </button> : null }
+
            <img className="path-card-image" src= { showImage } />
             <div className="path-card-info">
-             <div className='path-card-title'>{  path.name }</div>
-               <div className='path-card-location'>{ path.location }</div>
-               <div className='path-card-difficulty'>Difficulty: { levelOfDifficulty() }</div>
-             <div className='path-card-rating'>Rating: { path.stars }</div>
-           </div>
+              <div className='path-card-title'>{ path.name }</div>
+              <div className='path-card-location'>{ path.location }</div>
+              <div className='path-card-difficulty'>Difficulty: { levelOfDifficulty() } </div>
+              <div className='path-card-rating'>Rating: { displayStars() }</div>
+            </div>
          </div>
        )
      }
    }
+export default PathCard
