@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import style from '../styles/paths.css'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import { NavLink } from "react-router-dom"
+import style from '../styles/style.css'
 
-export default class UpdateUser extends Component {
+class UpdateUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,7 +24,7 @@ export default class UpdateUser extends Component {
     let id = userId
     // event.preventDefault();
     id = `${this.props.currentUser.id}`
-    fetch(`http://localhost:3000/api/v1/users/${id}`, {
+    fetch(`https://mountainbiker.herokuapp.com/api/v1/users/${id}`, {
       method: "PATCH", mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -100,3 +99,4 @@ export default class UpdateUser extends Component {
     )
   }
 }
+export default UpdateUser
