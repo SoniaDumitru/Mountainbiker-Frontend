@@ -33,7 +33,7 @@ https://mountain-biker.herokuapp.com/home
 
 * Logged in users can save trails to their favorites list -> Profile Page: 
 
-<img width="1438" alt="Screen Shot 2020-03-09 at 4 55 49 PM" src="https://user-images.githubusercontent.com/44908424/76260944-eba59c80-6226-11ea-95d9-8defdf507c6b.png">
+<img width="1433" alt="Screen Shot 2020-03-09 at 5 23 42 PM" src="https://user-images.githubusercontent.com/44908424/76262594-c4e96500-622a-11ea-86ec-926bb9d07977.png">
 
 * Login -> Login Page: 
 
