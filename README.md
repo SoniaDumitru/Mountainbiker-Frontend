@@ -21,7 +21,6 @@ https://mountain-biker.herokuapp.com/home
 
 * Trail Details:
 
-
 <img width="1425" alt="Screen Shot 2020-03-09 at 5 03 36 PM" src="https://user-images.githubusercontent.com/44908424/76261787-c2860b80-6228-11ea-85cf-25019e7ceadc.png">
 
 * Post Comment for Trail:
