@@ -75,8 +75,8 @@ export default class User extends Component {
           </Image><br></br>
 
         <div className="username">{currentUser.name}</div><br></br>
-        <div><i>🏠<strong>Location: {currentUser.location}</strong></i></div><br></br>
-        <div><i><strong>Member since: {this.date(currentUser.created_at)}</strong></i></div><br></br>
+        <div>🏠Location: <strong>{currentUser.location}</strong></div><br></br>
+        <div>Member since: <strong>{this.date(currentUser.created_at)}</strong></div><br></br>
 
         <div>
           <Button

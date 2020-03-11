@@ -9,7 +9,6 @@ class Path extends Component {
     super(props)
     this.state = {
       path: [],
-      showTextArea: true,
       content: '',
       comments: []
     }
@@ -25,10 +24,6 @@ class Path extends Component {
     else { difficulty = "Difficulty Unknown"}
     return difficulty
   }
-
-  handleClick = () => {this.setState({showTextArea: !this.state.showTextArea})}
-  handleShow = () => this.setState({ active: true })
-  handleHide = () => this.setState({ active: false })
 
   componentDidMount() {
     fetch('https://mountainbiker.herokuapp.com/api/v1/paths/')
@@ -88,13 +83,6 @@ class Path extends Component {
   }
 
   render() {
-    const { active } = this.state
-    const content = (
-      <div>
-        <Header as='h2' inverted > View public comments & post your opinion!</Header>
-        <Button onClick={this.handleClick} size='huge' color='black'>👍</Button>
-      </div>
-    )
 
     const displayStars = () => {
       let stars = ''
@@ -135,8 +123,6 @@ class Path extends Component {
                           <Grid.Column>
                             <img
                               className="path-image"
-                              dimmed={active}
-                              dimmer={{ active, content }}
                               onMouseEnter={this.handleShow}
                               onMouseLeave={this.handleHide}
                               size="huge"
