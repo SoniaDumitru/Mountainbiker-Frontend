@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './map.js';
+require('dotenv').config();
 
 export class MapContainer extends Component {
   state = {
@@ -49,5 +50,5 @@ export class MapContainer extends Component {
   }
 
   export default GoogleApiWrapper({
-    apiKey: 'AIzaSyAhk9qA2cIotQ4zDKVHnpWQKYfw3JPLg0g'
+    apiKey: process.env.REACT_APP_API_KEY_GOOGLE_MAPS
   })(MapContainer);
