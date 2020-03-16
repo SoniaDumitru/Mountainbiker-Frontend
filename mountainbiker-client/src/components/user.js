@@ -46,7 +46,6 @@ export default class User extends Component {
   deleteCurrentUser =(userId)=> {
      let id = userId
       id = `${this.props.currentUser.id}`
-      console.log(id)
        fetch(`https://mountainbiker.herokuapp.com/api/v1/users/${id}`, {
          method: 'DELETE',
          headers: {

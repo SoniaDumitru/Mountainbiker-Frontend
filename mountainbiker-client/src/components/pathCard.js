@@ -54,7 +54,6 @@ class PathCard extends Component {
 //     }
 
   render() {
-    console.log(this.props.path)
     const levelOfDifficulty = () => {
       let score=''
       if (path.difficulty === "blue") {
