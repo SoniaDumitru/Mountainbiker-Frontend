@@ -27,7 +27,6 @@ export class MapContainer extends Component {
   };
 
   render() {
-    console.log(process.env)
       return (
         <CurrentLocation
           path={this.props.path}
