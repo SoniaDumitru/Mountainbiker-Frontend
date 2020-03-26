@@ -1,11 +1,47 @@
-# Mountainbiker-Frontend
-Final Project Flatiron School
+# The App - Mountainbiker
 
-# Demo 
+Platform connecting mountainbikers with trails, where they can search trails by name and by locationcan add them to their favorite adventures. Users can post opinions about favorite trails and see all details including Google Maps location. 
+Built with RESTful API architecture and CRUD functionalities.
 
-https://mountain-biker.herokuapp.com/home
-- Login -> Username: sonia@gmail.com
--> Password: sonia
+## Motivations
+Build a fullstack app that uses Ruby for the backend with PostgreSQL and React for the frontend.
+
+## Demo 
+<a href="https://mountain-biker.herokuapp.com/home">Here!</a>
+
+## Technical details and Resources
+- Front-end built with React and React Router.
+- Styling with pure CSS and Semantic UI.
+- PostgreSQL database.
+- Authentication with JWT.
+- Developed a Ruby on Rails API backend with 4 different endpoints: for users, paths, comments and adventures.
+- Used serializer to format the JSON file.
+- APIs: The Mountainbike Project Data API and Google Maps API
+
+## Installation
+- Fork and clone the project frontend: https://github.com/SoniaDumitru/Mountainbiker-Frontend 
+- Fork and clone the project backend: https://github.com/SoniaDumitru/Mountainbiker-Backend
+- Have Ruby, Rails and Node.js installed.
+- In your terminal, go to Mountainbiker-Backend
+```bash
+    $ rails db:create
+    $ rails db:migrate
+    $ rails s
+```
+The server will start on http://localhost:3001
+
+- In your terminal, go to Mountainbiker-Frontend
+```bash
+    $ npm install
+    $ npm install
+    $ npm start
+````
+The app will run on http://localhost:3000
+
+## Visuals
+### Login
+- Username: sonia@gmail.com
+- Password: sonia
 
 * Home Page: 
 
@@ -43,26 +79,5 @@ https://mountain-biker.herokuapp.com/home
 
 <img width="1433" alt="Screen Shot 2020-03-09 at 4 57 00 PM" src="https://user-images.githubusercontent.com/44908424/76260989-024bf380-6227-11ea-95b3-4aab0e52707f.png">
 
-
-# Instalation:
-Have Ruby, Rails and Node.js installed.
-
-- Fork and clone this frontend repo and the backend repo
-- From the backend directory:
-* Run $ bundle install
-* Run $ rake db:migrate
-* Run $ rails start
-- cd into the mountainbiker-client directory
-* Run $ npm install
-* Run $ npm start 
-
-# Technologies and Resources
-
-* Front-end: JavaScript libraries (React)
-* Back-end: Ruby on Rails
-* The Mountainbike Project Data API
-* Google Maps API
-* Bootstrap
-
-# Author
+## Author
 * Sonia Dumitru 
