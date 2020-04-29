@@ -33,7 +33,6 @@ The server will start on http://localhost:3001
 - In your terminal, go to Mountainbiker-Frontend
 ```bash
     $ npm install
-    $ npm install
     $ npm start
 ````
 The app will run on http://localhost:3000
